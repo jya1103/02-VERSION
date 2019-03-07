@@ -58,6 +58,8 @@ namespace TrackFileActivites
             this.chkAttributes = new System.Windows.Forms.CheckBox();
             this.chkSize = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.gbNotifyFilter.SuspendLayout();
@@ -103,14 +105,14 @@ namespace TrackFileActivites
             this.txtSetPath.Location = new System.Drawing.Point(51, 12);
             this.txtSetPath.Name = "txtSetPath";
             this.txtSetPath.ReadOnly = true;
-            this.txtSetPath.Size = new System.Drawing.Size(154, 20);
+            this.txtSetPath.Size = new System.Drawing.Size(175, 20);
             this.txtSetPath.TabIndex = 0;
             this.toolTipTrackPath.SetToolTip(this.txtSetPath, "Please select a path to Track File Activites.");
             // 
             // btnSetPath
             // 
             this.btnSetPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetPath.Location = new System.Drawing.Point(211, 10);
+            this.btnSetPath.Location = new System.Drawing.Point(234, 10);
             this.btnSetPath.Name = "btnSetPath";
             this.btnSetPath.Size = new System.Drawing.Size(30, 23);
             this.btnSetPath.TabIndex = 1;
@@ -212,7 +214,7 @@ namespace TrackFileActivites
             "*.ppt"});
             this.cmbFilters.Location = new System.Drawing.Point(51, 65);
             this.cmbFilters.Name = "cmbFilters";
-            this.cmbFilters.Size = new System.Drawing.Size(154, 21);
+            this.cmbFilters.Size = new System.Drawing.Size(76, 21);
             this.cmbFilters.TabIndex = 10;
             this.cmbFilters.Text = "*.*";
             // 
@@ -327,17 +329,37 @@ namespace TrackFileActivites
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(247, 10);
+            this.textBox1.Location = new System.Drawing.Point(270, 10);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(618, 254);
+            this.textBox1.Size = new System.Drawing.Size(595, 224);
             this.textBox1.TabIndex = 22;
+            // 
+            // textBox2
+            // 
+            this.textBox2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.textBox2.Location = new System.Drawing.Point(51, 38);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(175, 20);
+            this.textBox2.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Log";
+            this.toolTipTrackPath.SetToolTip(this.label1, "Please select a path to Track File Activites.");
             // 
             // frmTrackFileActivites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 276);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbNotifyFilter);
             this.Controls.Add(this.cmbFilters);
@@ -395,6 +417,8 @@ namespace TrackFileActivites
         private System.Windows.Forms.CheckBox chkAttributes;
         private System.Windows.Forms.CheckBox chkSize;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

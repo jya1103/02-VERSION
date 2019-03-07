@@ -166,7 +166,7 @@ namespace TrackFileActivites
                         Directory.CreateDirectory(strWorkPath);
                     }
                     //Set the File Name
-                    strWorkPath = strWorkPath + "\\TrackFileActivities.log"; textBox1.Text = strWorkPath;
+                    strWorkPath = strWorkPath + "\\TrackFileActivities.log"; textBox2.Text = strWorkPath;
                     //Create the file if it is not created
                     if (!File.Exists(strWorkPath))
                     {
@@ -174,8 +174,8 @@ namespace TrackFileActivites
                         tw.Close();
                     }
 
-
-
+                    txtSetPath.Enabled = false;
+                    textBox2.Enabled = false;
                     notifyIcon.Text = "Track File Activites [running]";
                     btnStartTracking.Enabled = false;
                     btnStopTracking.Enabled = true;
@@ -259,7 +259,7 @@ namespace TrackFileActivites
 
             fileSystemWatcher.EnableRaisingEvents = false;
         }
-        /*
+      
         private void frmTrackFileActivites_FormClosing(object sender, FormClosingEventArgs e)
         {
             //If the flag is "false", then it means that it is not raised from context menu and it is raised by clicking X button in the form
@@ -314,7 +314,7 @@ namespace TrackFileActivites
                 Application.Exit();
             }
         }
-           */
+       
         public void frmTrackLog_Disposed(object sender, EventArgs e)
         {
             //When the form is disposed, set the handle back
