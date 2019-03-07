@@ -34,7 +34,7 @@ namespace TrackFileActivites
             hwdfrmTrackLog = -1;
 
             //Set the default location of the window
-      this.Location = new System.Drawing.Point(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - 650, System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - 400);
+      this.Location = new System.Drawing.Point(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - 950, System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - 400);
 
             //If path is already defined, then display it in the track textbox
             /*Registory Path = My Computer\HKEY_LOCAL_MACHINE\SOFTWARE\TrackFileActivitesSumit\*/
@@ -48,35 +48,35 @@ namespace TrackFileActivites
             {
                 txtSetPath.Text = rkOpenTrack.GetValue("Path").ToString();
             }
-//bon
-/*
-            //If path is already defined, then display it in the work textbox
-            RegistryKey rkOpenWork = rk.OpenSubKey("SOFTWARE\\" + "TrackFileActivitesSumit\\WorkPath");
-            if (rkOpenWork != null)
-            {
-                txtWorkPath.Text = rkOpenWork.GetValue("Path").ToString();
+//WorkPath
+            /*
+                        //If path is already defined, then display it in the work textbox
+                        RegistryKey rkOpenWork = rk.OpenSubKey("SOFTWARE\\" + "TrackFileActivitesSumit\\WorkPath");
+                        if (rkOpenWork != null)
+                        {
+                            txtWorkPath.Text = rkOpenWork.GetValue("Path").ToString();
 
-                //Set the Directory Path based on the date
-                strWorkPath = txtWorkPath.Text + "\\" + System.DateTime.Now.Day.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Year.ToString();
-                //Create the directory if it is not created
- //bon     
-                if (!Directory.Exists(strWorkPath))
-                {
-                    Directory.CreateDirectory(strWorkPath);
-                }
-                //Set the File Name
-                strWorkPath = strWorkPath + "\\TrackFileActivities.log";
-                //Create the file if it is not created
-                if (!File.Exists(strWorkPath))
-                {
-                    TextWriter tw = new StreamWriter(strWorkPath);
-                    tw.Close();
-                }
-              
-            } 
- */
+                            //Set the Directory Path based on the date
+                            strWorkPath = txtWorkPath.Text + "\\" + System.DateTime.Now.Day.ToString() + "-" + System.DateTime.Now.Month.ToString() + "-" + System.DateTime.Now.Year.ToString();
+                            //Create the directory if it is not created
+             
+                            if (!Directory.Exists(strWorkPath))
+                            {
+                                Directory.CreateDirectory(strWorkPath);
+                            }
+                            //Set the File Name
+                            strWorkPath = strWorkPath + "\\TrackFileActivities.log";
+                            //Create the file if it is not created
+                            if (!File.Exists(strWorkPath))
+                            {
+                                TextWriter tw = new StreamWriter(strWorkPath);
+                                tw.Close();
+                            }
+
+                        } 
+             */
         }
-    
+
 
         private void btnSetPath_Click(object sender, EventArgs e)
         {
@@ -262,17 +262,17 @@ namespace TrackFileActivites
       
         private void frmTrackFileActivites_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //If the flag is "false", then it means that it is not raised from context menu and it is raised by clicking X button in the form
+            //If the flag is "false", then it means that it is it is raised by clicking X button in the form (not raised from context menu)
             if (boolContextFormClose == false)
             {
                 e.Cancel = true;
                 TopMost = false;
                 this.WindowState = FormWindowState.Minimized;
 
-                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-                notifyIcon.BalloonTipTitle = "Track File Activity ...";
-                notifyIcon.BalloonTipText = "Track File Activity is still running in background.\nDouble click me to open options again.";
-                notifyIcon.ShowBalloonTip(5);
+              //  notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+              //  notifyIcon.BalloonTipTitle = "Track File Activity ...";
+               // notifyIcon.BalloonTipText = "Track File Activity is still running in background.\nDouble click me to open options again.";
+              //  notifyIcon.ShowBalloonTip(5);
             }
             //Otherwise the close event is raised from context menu and ask the user whether he wants to close the application
             else
@@ -345,13 +345,12 @@ namespace TrackFileActivites
             sw.Close();
         }
 
-        private void AppendText(string sLog)
-        {
-            textBox1.AppendText( sLog);
-        }
+        
 
         private void fileSystemWatcher_Deleted(object sender, System.IO.FileSystemEventArgs e)
         {
+            string sLog = Convert.ToString(DateTime.Now) + " | " + e.ChangeType + " | " + e.FullPath + Environment.NewLine;
+            AppendText(sLog);
             StreamWriter sw = File.AppendText(strWorkPath);
             sw.WriteLine(e.ChangeType + "|" + e.FullPath + "|" + DateTime.Now.ToLongTimeString());
             sw.Flush();
@@ -360,13 +359,18 @@ namespace TrackFileActivites
 
         private void fileSystemWatcher_Renamed(object sender, System.IO.RenamedEventArgs e)
         {
+            string sLog = Convert.ToString(DateTime.Now) + " | " + e.ChangeType + " | " + e.FullPath + Environment.NewLine;
+            AppendText(sLog);
             StreamWriter sw = File.AppendText(strWorkPath);
             sw.WriteLine(e.ChangeType + "|" + e.OldFullPath + " to " + e.FullPath + "|" + DateTime.Now.ToLongTimeString());
             sw.Flush();
             sw.Close();
         }
+        private void AppendText(string sLog)
+        {
+            textBox1.AppendText(sLog);
+        }
 
-        
     }
 
 }

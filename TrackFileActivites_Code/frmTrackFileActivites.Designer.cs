@@ -43,6 +43,7 @@ namespace TrackFileActivites
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
             this.lblTrackPath = new System.Windows.Forms.Label();
             this.toolTipTrackPath = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.toolTipWorkPath = new System.Windows.Forms.ToolTip(this.components);
             this.lblFilter = new System.Windows.Forms.Label();
             this.chkIncludeSubdirectories = new System.Windows.Forms.CheckBox();
@@ -59,7 +60,6 @@ namespace TrackFileActivites
             this.chkSize = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.gbNotifyFilter.SuspendLayout();
@@ -71,6 +71,7 @@ namespace TrackFileActivites
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Track File Activites [not running]";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // contextMenuStrip
             // 
@@ -80,6 +81,7 @@ namespace TrackFileActivites
             this.toolStripMenuItemExit});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(149, 70);
+            this.contextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip_ItemClicked);
             // 
             // toolStripMenuItemOpenOptions
             // 
@@ -104,7 +106,6 @@ namespace TrackFileActivites
             this.txtSetPath.BackColor = System.Drawing.SystemColors.Window;
             this.txtSetPath.Location = new System.Drawing.Point(51, 12);
             this.txtSetPath.Name = "txtSetPath";
-            this.txtSetPath.ReadOnly = true;
             this.txtSetPath.Size = new System.Drawing.Size(175, 20);
             this.txtSetPath.TabIndex = 0;
             this.toolTipTrackPath.SetToolTip(this.txtSetPath, "Please select a path to Track File Activites.");
@@ -175,6 +176,16 @@ namespace TrackFileActivites
             this.toolTipTrackPath.ReshowDelay = 0;
             this.toolTipTrackPath.ToolTipTitle = "Tracking Directory";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Log";
+            this.toolTipTrackPath.SetToolTip(this.label1, "Please select a path to Track File Activites.");
+            // 
             // toolTipWorkPath
             // 
             this.toolTipWorkPath.AutomaticDelay = 0;
@@ -196,6 +207,8 @@ namespace TrackFileActivites
             // chkIncludeSubdirectories
             // 
             this.chkIncludeSubdirectories.AutoSize = true;
+            this.chkIncludeSubdirectories.Checked = true;
+            this.chkIncludeSubdirectories.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIncludeSubdirectories.Location = new System.Drawing.Point(51, 95);
             this.chkIncludeSubdirectories.Name = "chkIncludeSubdirectories";
             this.chkIncludeSubdirectories.Size = new System.Drawing.Size(131, 17);
@@ -343,16 +356,6 @@ namespace TrackFileActivites
             this.textBox2.Size = new System.Drawing.Size(175, 20);
             this.textBox2.TabIndex = 23;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Log";
-            this.toolTipTrackPath.SetToolTip(this.label1, "Please select a path to Track File Activites.");
-            // 
             // frmTrackFileActivites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +381,8 @@ namespace TrackFileActivites
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Track File Activites";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTrackFileActivites_FormClosing);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.gbNotifyFilter.ResumeLayout(false);

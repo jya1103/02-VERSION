@@ -1,0 +1,10 @@
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\bin\Release\TrackFileActivites.exe
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\bin\Release\TrackFileActivites.pdb
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.csprojAssemblyReference.cache
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.frmTrackFileActivites.resources
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.frmTrackLog.resources
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.Properties.Resources.resources
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.csproj.GenerateResource.cache
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.csproj.CoreCompileInputs.cache
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.exe
+C:\Users\jya1104\OneDrive\GitHub\VERSION\02-VERSION\TrackFileActivites_Code\obj\Release\TrackFileActivites.pdb
