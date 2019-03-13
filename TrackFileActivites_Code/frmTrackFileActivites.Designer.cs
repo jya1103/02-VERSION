@@ -60,6 +60,9 @@ namespace TrackFileActivites
             this.chkSize = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button_resolve = new System.Windows.Forms.Button();
+            this.textBox_ip = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.gbNotifyFilter.SuspendLayout();
@@ -104,7 +107,7 @@ namespace TrackFileActivites
             // txtSetPath
             // 
             this.txtSetPath.BackColor = System.Drawing.SystemColors.Window;
-            this.txtSetPath.Location = new System.Drawing.Point(51, 12);
+            this.txtSetPath.Location = new System.Drawing.Point(50, 47);
             this.txtSetPath.Name = "txtSetPath";
             this.txtSetPath.Size = new System.Drawing.Size(175, 20);
             this.txtSetPath.TabIndex = 0;
@@ -113,9 +116,9 @@ namespace TrackFileActivites
             // btnSetPath
             // 
             this.btnSetPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetPath.Location = new System.Drawing.Point(234, 10);
+            this.btnSetPath.Location = new System.Drawing.Point(233, 45);
             this.btnSetPath.Name = "btnSetPath";
-            this.btnSetPath.Size = new System.Drawing.Size(30, 23);
+            this.btnSetPath.Size = new System.Drawing.Size(56, 23);
             this.btnSetPath.TabIndex = 1;
             this.btnSetPath.Text = "...";
             this.toolTipTrackPath.SetToolTip(this.btnSetPath, "Please select a path to Track File Activites.");
@@ -124,7 +127,7 @@ namespace TrackFileActivites
             // 
             // btnStartTracking
             // 
-            this.btnStartTracking.Location = new System.Drawing.Point(59, 241);
+            this.btnStartTracking.Location = new System.Drawing.Point(58, 276);
             this.btnStartTracking.Name = "btnStartTracking";
             this.btnStartTracking.Size = new System.Drawing.Size(83, 23);
             this.btnStartTracking.TabIndex = 2;
@@ -135,7 +138,7 @@ namespace TrackFileActivites
             // btnStopTracking
             // 
             this.btnStopTracking.Enabled = false;
-            this.btnStopTracking.Location = new System.Drawing.Point(148, 241);
+            this.btnStopTracking.Location = new System.Drawing.Point(147, 276);
             this.btnStopTracking.Name = "btnStopTracking";
             this.btnStopTracking.Size = new System.Drawing.Size(84, 23);
             this.btnStopTracking.TabIndex = 3;
@@ -160,7 +163,7 @@ namespace TrackFileActivites
             // lblTrackPath
             // 
             this.lblTrackPath.AutoSize = true;
-            this.lblTrackPath.Location = new System.Drawing.Point(12, 15);
+            this.lblTrackPath.Location = new System.Drawing.Point(11, 50);
             this.lblTrackPath.Name = "lblTrackPath";
             this.lblTrackPath.Size = new System.Drawing.Size(35, 13);
             this.lblTrackPath.TabIndex = 6;
@@ -179,7 +182,7 @@ namespace TrackFileActivites
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 41);
+            this.label1.Location = new System.Drawing.Point(19, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 24;
@@ -198,7 +201,7 @@ namespace TrackFileActivites
             // lblFilter
             // 
             this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(12, 68);
+            this.lblFilter.Location = new System.Drawing.Point(15, 103);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(29, 13);
             this.lblFilter.TabIndex = 8;
@@ -209,11 +212,11 @@ namespace TrackFileActivites
             this.chkIncludeSubdirectories.AutoSize = true;
             this.chkIncludeSubdirectories.Checked = true;
             this.chkIncludeSubdirectories.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIncludeSubdirectories.Location = new System.Drawing.Point(51, 95);
+            this.chkIncludeSubdirectories.Location = new System.Drawing.Point(132, 104);
             this.chkIncludeSubdirectories.Name = "chkIncludeSubdirectories";
-            this.chkIncludeSubdirectories.Size = new System.Drawing.Size(131, 17);
+            this.chkIncludeSubdirectories.Size = new System.Drawing.Size(93, 17);
             this.chkIncludeSubdirectories.TabIndex = 9;
-            this.chkIncludeSubdirectories.Text = "Include Subdirectories";
+            this.chkIncludeSubdirectories.Text = "Subdirectories";
             this.chkIncludeSubdirectories.UseVisualStyleBackColor = true;
             // 
             // cmbFilters
@@ -221,11 +224,12 @@ namespace TrackFileActivites
             this.cmbFilters.FormattingEnabled = true;
             this.cmbFilters.Items.AddRange(new object[] {
             "*.*",
-            "*.txt",
+            "*.exe",
             "*.docx",
             "*.xls",
-            "*.ppt"});
-            this.cmbFilters.Location = new System.Drawing.Point(51, 65);
+            "*.ppt",
+            "*.txt"});
+            this.cmbFilters.Location = new System.Drawing.Point(50, 100);
             this.cmbFilters.Name = "cmbFilters";
             this.cmbFilters.Size = new System.Drawing.Size(76, 21);
             this.cmbFilters.TabIndex = 10;
@@ -250,7 +254,7 @@ namespace TrackFileActivites
             this.gbNotifyFilter.Controls.Add(this.chkLastWrite);
             this.gbNotifyFilter.Controls.Add(this.chkAttributes);
             this.gbNotifyFilter.Controls.Add(this.chkSize);
-            this.gbNotifyFilter.Location = new System.Drawing.Point(15, 118);
+            this.gbNotifyFilter.Location = new System.Drawing.Point(8, 137);
             this.gbNotifyFilter.Name = "gbNotifyFilter";
             this.gbNotifyFilter.Size = new System.Drawing.Size(217, 116);
             this.gbNotifyFilter.TabIndex = 21;
@@ -303,6 +307,8 @@ namespace TrackFileActivites
             // chkDirectoryName
             // 
             this.chkDirectoryName.AutoSize = true;
+            this.chkDirectoryName.Checked = true;
+            this.chkDirectoryName.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDirectoryName.Location = new System.Drawing.Point(115, 19);
             this.chkDirectoryName.Name = "chkDirectoryName";
             this.chkDirectoryName.Size = new System.Drawing.Size(96, 17);
@@ -333,6 +339,8 @@ namespace TrackFileActivites
             // chkSize
             // 
             this.chkSize.AutoSize = true;
+            this.chkSize.Checked = true;
+            this.chkSize.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSize.Location = new System.Drawing.Point(115, 42);
             this.chkSize.Name = "chkSize";
             this.chkSize.Size = new System.Drawing.Size(46, 17);
@@ -342,25 +350,54 @@ namespace TrackFileActivites
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(270, 10);
+            this.textBox1.Location = new System.Drawing.Point(295, 16);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(595, 224);
+            this.textBox1.Size = new System.Drawing.Size(569, 253);
             this.textBox1.TabIndex = 22;
             // 
             // textBox2
             // 
             this.textBox2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.textBox2.Location = new System.Drawing.Point(51, 38);
+            this.textBox2.Location = new System.Drawing.Point(50, 73);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(175, 20);
             this.textBox2.TabIndex = 23;
+            // 
+            // button_resolve
+            // 
+            this.button_resolve.Location = new System.Drawing.Point(233, 18);
+            this.button_resolve.Name = "button_resolve";
+            this.button_resolve.Size = new System.Drawing.Size(56, 23);
+            this.button_resolve.TabIndex = 25;
+            this.button_resolve.Text = "Resolve";
+            this.button_resolve.UseVisualStyleBackColor = true;
+            this.button_resolve.Click += new System.EventHandler(this.button_resolve_Click);
+            // 
+            // textBox_ip
+            // 
+            this.textBox_ip.Location = new System.Drawing.Point(50, 21);
+            this.textBox_ip.Name = "textBox_ip";
+            this.textBox_ip.Size = new System.Drawing.Size(175, 20);
+            this.textBox_ip.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Host";
             // 
             // frmTrackFileActivites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 276);
+            this.ClientSize = new System.Drawing.Size(877, 323);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox_ip);
+            this.Controls.Add(this.button_resolve);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -424,6 +461,9 @@ namespace TrackFileActivites
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_resolve;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_ip;
     }
 }
 

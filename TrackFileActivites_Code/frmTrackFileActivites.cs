@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 /*FileName, DirectoryName, Attributes, Size, LastWrite, LastAccess, CreationTime, Security*/
 
@@ -241,15 +243,65 @@ namespace TrackFileActivites
             }
         } // fin btnStartTracking_Click
 
+        public static bool GetResolvedConnecionIPAddress(string serverNameOrURL,
+                     out IPAddress resolvedIPAddress)
+        {
+            bool isResolved = false;
+            IPHostEntry hostEntry = null;
+            IPAddress resolvIP = null;
+            try
+            {
+                if (!IPAddress.TryParse(serverNameOrURL, out resolvIP))
+                {
+                    hostEntry = Dns.GetHostEntry(serverNameOrURL);
 
+                    if (hostEntry != null && hostEntry.AddressList != null
+                                 && hostEntry.AddressList.Length > 0)
+                    {
+                        if (hostEntry.AddressList.Length == 1)
+                        {
+                            resolvIP = hostEntry.AddressList[0];
+                            isResolved = true;
+                        }
+                        else
+                        {
+                            foreach (IPAddress var in hostEntry.AddressList)
+                            {
+                                if (var.AddressFamily == AddressFamily.InterNetwork)
+                                {
+                                    resolvIP = var;
+                                    isResolved = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    isResolved = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                isResolved = false;
+                MessageBox.Show("resolvIP is awesome.");
+                resolvIP = null;
+            }
+            finally
+            {
+                resolvedIPAddress = resolvIP;
+            }
 
+            return isResolved;
+        }
 
         private void btnStopTracking_Click(object sender, EventArgs e)
         {
             notifyIcon.Text = "Track File Activites [not running]";
             btnStartTracking.Enabled = true;
             btnStopTracking.Enabled = false;
-
+            txtSetPath.Enabled = true;
             btnSetPath.Enabled = true;
           //  btnWorkPath.Enabled = true;
             cmbFilters.Enabled = true;
@@ -370,6 +422,20 @@ namespace TrackFileActivites
         {
             textBox1.AppendText(sLog);
         }
+
+        private void button_resolve_Click(object sender, EventArgs e)
+        {
+            ////Using the Method
+            IPAddress ip = null;
+            if (GetResolvedConnecionIPAddress(textBox_ip.Text, out ip))
+            {
+              
+                    textBox1.AppendText(Convert.ToString(ip));
+             
+            }
+        }
+        
+
 
     }
 
